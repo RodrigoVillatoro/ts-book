@@ -1,0 +1,27 @@
+{
+  "name": "ts-book",
+  "description": "examples from learning typescript book",
+  "main": "index.html",
+  "authors": [
+    "Rodrigo Villatoro <rodrigovillatoro@hotmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "typescript"
+  ],
+  "homepage": "https://github.com/rodrigovd/ts-book",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  },
+  "devDependencies": {
+    "jasmine-core": "jasmine#~2.4.1"
+  }
+}
