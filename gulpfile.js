@@ -1,6 +1,7 @@
 'use strict';
 
 var
+  browserSync = require('browser-sync'),
 	browserify	= require('browserify'),
 	gulp				= require('gulp'),
   karma       = require('gulp-karma'),
@@ -76,6 +77,40 @@ gulp.task('karma', function(cb){
     .on('error', function(err){
       throw err;
     });
+});
+
+gulp.task('bundle', function(cb){
+  runSequence(
+    'build', 
+    ['bundle-js', 'bundle-test'], 
+    cb
+   );
+});
+
+gulp.task('test', function(cb){
+  runSequence(
+    'bundle',
+    ['karma'],
+    cb
+  );
+});
+
+gulp.task('browser-sync', ['test'], function(){
+  
+  browserSync({
+    server: {
+      baseDir: './dist'
+    }
+  });
+  
+  return gulp.watch([
+    './dist/source/js/**/*.js',
+    './dist/source/css/**.css',
+    './dist/test/**/**.test.js',
+    './dist/data/**/**',
+    './index.html'
+  ], [browserSync.reload]);
+  
 });
 
 gulp.task('default', function(cb){
